@@ -16,6 +16,10 @@ container: joneslanglasalle/imagefactory:vsphere
 workspace:
   clean: all
 
+variables:
+  group: vsphere-uslilvmlabvc01
+  vsphereconfig: "./vsphere-vars-uslilvmlabvc01.json"
+
 steps:
 - task: CmdLine@2
   displayName: Testing
@@ -27,4 +31,5 @@ steps:
 - task: CmdLine@2
   displayName: Packer Validate
   inputs:
-    script: packer build -color=false -machine-readable ./packer/windows-base.json
+    script: packer build -color=false -machine-readable -var-file=$(vsphereconfig) ./packer/windows-base.json 
+

@@ -1,5 +1,61 @@
 {
-  "variables": {},
-  "builders": {},
-  "provisioners": {}
+  "variables": {
+    "vcenter_username": "{{env `VSPHERE_USERNAME`}}",
+    "vcenter_password": "{{env `VSPHERE_PASSWORD`}}",
+    "packer_password": "{{env `PACKER_PASSWORD`}}"
+  },
+
+  "builders": [
+    {
+      "type": "vsphere-iso",
+
+      "vcenter_server": "{{user `vcenter_server`}}",
+      "username": "{{user `vcenter_username`}}",
+      "password": "{{user `vcenter_password`}}",
+      "insecure_connection": true,
+      "datacenter": "{{user `vcenter_datacenter`}}",
+
+      "vm_name": "{{user `vm_guest_prefix`}}_template{{timestamp}}",
+      "folder": "{{user `vcenter_template_folder`}}",
+      "cluster": "{{user `vcenter_cluster`}}",
+      "host": "{{user `vcenter_host`}}",
+      "datastore": "{{user `vcenter_datastore`}}",
+
+      "CPUs": 2,
+      "RAM": 4096,
+      "disk_size": 61440,
+      "network": "{{user `vcenter_vlan`}}",
+
+      "guest_os_type": "{{user `guest_os_type`}}",
+      "disk_controller_type": "pvscsi",
+      "disk_thin_provisioned": true,
+      "network_card": "vmxnet3",
+
+      "iso_paths": [
+        "{{user `os_iso_path`}}",
+        "{{user `vmtools_iso_path`}}"
+      ],
+
+      "floppy_files": [
+        "{{template_dir}}/setup/"
+      ],
+      "floppy_img_path": "{{user `floppy_img_path`}}",
+
+      "communicator": "winrm",
+      "winrm_username": "packer",
+      "winrm_password": "{{user `packer_password`}}",
+      "winrm_timeout": "2h",
+
+      "shutdown_timeout": "1h",
+
+      "convert_to_template": false
+    }
+  ],
+
+  "provisioners": [
+   {
+     "type": "powershell",
+     "inline": ["dir c:\\"]
+   }
+  ]
 }
