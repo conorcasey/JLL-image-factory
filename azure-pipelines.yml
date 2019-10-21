@@ -31,5 +31,5 @@ steps:
 - task: CmdLine@2
   displayName: Packer Validate
   inputs:
-    script: packer build -color=false -machine-readable -var-file=$(vsphereconfig) ./packer/windows-base.json 
+    script: packer build -color=false -var-file=$(vsphereconfig) ./packer/windows-base.json 
 
