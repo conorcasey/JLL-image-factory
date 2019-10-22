@@ -18,7 +18,7 @@ workspace:
 
 variables:
   group: vsphere-uslilvmlabvc01
-  vsphereconfig: "./vsphere-vars-uslilvmlabvc01.json"
+  vsphereconfig: "./packer/vsphere-vars-uslilvmlabvc01.json"
 
 steps:
 - task: CmdLine@2
