@@ -21,7 +21,7 @@ variables:
   vsphereconfig: "./packer/vsphere-vars-uslilvmlabvc01.json"
 
 steps:
-- bash: echo $VSPHERE_USERNAME
+- bash: echo $vsphere_username
   env: 
     vsphere_username: $(VSPHERE_USERNAME)
 - task: CmdLine@2
