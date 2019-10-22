@@ -22,6 +22,8 @@ variables:
 
 steps:
 - bash: echo $VSPHERE_USERNAME
+  env: 
+    vsphere_username: $(VSPHERE_USERNAME)
 - task: CmdLine@2
   displayName: Testing
   inputs:
