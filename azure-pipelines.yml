@@ -23,7 +23,16 @@ variables:
 steps:
 #- bash: echo $(VSPHERE_USERNAME)
 - powershell: |
-    Write-Host "Testing ${env:VSPHERE_USERNAME}"
+    # Using an input-macro:
+    #Write-Host "This works: $(mySecret)"
+
+    # Using the env var directly:
+    #Write-Host "This does not work: $env:MYSECRET"
+
+    # Using the mapped env var:
+    Write-Host "This works: $env:VSPHERE_USERNAME"    # Recommended
+  env:
+    MY_MAPPED_ENV_VAR: $(VSPHERE_USERNAME)
 
 #- task: CmdLine@2
 #  displayName: Packer build
