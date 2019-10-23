@@ -28,9 +28,9 @@ steps:
     #Write-Host "This works 1: $(VSPHERE_USERNAME)"
 
     # Using the mapped env var:
-    Write-Host "This works 2: $env:VSPHERE_USERNAME"    # Recommended
+    Write-Host "This works 2: $env:TESTING"    # Recommended
   env:
-    MY_MAPPED_ENV_VAR: $(VSPHERE_USERNAME)
+    MY_MAPPED_ENV_VAR: $(TESTING)
 
 #- task: CmdLine@2
 #  displayName: Packer build
