@@ -24,7 +24,7 @@ steps:
 #- bash: echo $(VSPHERE_USERNAME)
 - powershell: |
     # Using an input-macro:
-    #Write-Host "This works: $(mySecret)"
+    Write-Host "This works: $(VSPHERE_USERNAME)"
 
     # Using the env var directly:
     #Write-Host "This does not work: $env:MYSECRET"
