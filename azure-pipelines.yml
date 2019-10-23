@@ -19,15 +19,13 @@ workspace:
 variables:
   group: vsphere-uslilvmlabvc01
   vsphereconfig: "./win2016/vsphere-vars-uslilvmlabvc01.json"
+  VSPHERE_USERNAME: "test\\conor.casey"
 
 steps:
 #- bash: echo $(VSPHERE_USERNAME)
 - powershell: |
     # Using an input-macro:
     Write-Host "This works: $(VSPHERE_USERNAME)"
-
-    # Using the env var directly:
-    #Write-Host "This does not work: $env:MYSECRET"
 
     # Using the mapped env var:
     Write-Host "This works: $env:VSPHERE_USERNAME"    # Recommended
