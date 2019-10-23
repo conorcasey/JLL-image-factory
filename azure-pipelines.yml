@@ -24,18 +24,18 @@ variables:
 
 steps:
 #- bash: echo $(VSPHERE_USERNAME)
-- script: echo $VSPHERE_USERNAME
-- powershell: |
-    # Using an input-macro:
-    Write-Host "This works 1: $(VSPHERE_USERNAME)"
+#- script: echo $VSPHERE_USERNAME
+#- powershell: |
+#    # Using an input-macro:
+#    Write-Host "This works 1: $(VSPHERE_USERNAME)"
+#
+#    # Using the mapped env var:
+#    Write-Host "This works 2: $env:VSPHERE_USERNAME"    # Recommended
+#  env:
+#    MY_MAPPED_ENV_VAR: $(VSPHERE_USERNAME)
 
-    # Using the mapped env var:
-    Write-Host "This works 2: $env:VSPHERE_USERNAME"    # Recommended
-  env:
-    MY_MAPPED_ENV_VAR: $(VSPHERE_USERNAME)
-
-#- task: CmdLine@2
-#  displayName: Packer build
-#  inputs:
-#    script: packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
+- task: CmdLine@2
+  displayName: Packer build
+  inputs:
+    script: packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
 
