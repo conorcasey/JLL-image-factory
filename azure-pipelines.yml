@@ -24,7 +24,7 @@ variables:
   #TESTING: "This is a new test"
 
 steps:
-#- bash: echo $(VSPHERE_USERNAME)
+- bash: echo '##vso[task.setvariable variable=PASS]$(VSPHERE_PASSWORD)'
 #- script: echo $VSPHERE_USERNAME
 #- powershell: |
 #    # Using an input-macro:
@@ -35,8 +35,8 @@ steps:
 #  env:
 #    MY_MAPPED_ENV_VAR: $(VSPHERE_USERNAME)
 
-- task: CmdLine@2
-  displayName: Packer build
-  inputs:
-    script: packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
+#- task: CmdLine@2
+#  displayName: Packer build
+#  inputs:
+#    script: packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
 
