@@ -21,10 +21,12 @@ variables:
   vsphereconfig: "./win2016/vsphere-vars-uslilvmlabvc01.json"
 
 steps:
-- bash: echo $(VSPHERE_USERNAME)
+#- bash: echo $(VSPHERE_USERNAME)
+- powershell: |
+    Write-Host "Testing ${env:VSPHERE_USERNAME}"
 
-- task: CmdLine@2
-  displayName: Packer build
-  inputs:
-    script: packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
+#- task: CmdLine@2
+#  displayName: Packer build
+#  inputs:
+#    script: packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
 
