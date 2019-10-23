@@ -21,15 +21,7 @@ variables:
   vsphereconfig: "./win2016/vsphere-vars-uslilvmlabvc01.json"
 
 steps:
-- bash: echo $vsphere_username
-  env: 
-    vsphere_username: $(VSPHERE_USERNAME)
-- task: CmdLine@2
-  displayName: Testing
-  inputs:
-    script: |
-      echo Testing...
-      ls -l
+- bash: echo $(VSPHERE_USERNAME)
 
 - task: CmdLine@2
   displayName: Packer build
