@@ -23,6 +23,7 @@ variables:
 
 steps:
 #- bash: echo $(VSPHERE_USERNAME)
+- script: echo $TESTING
 - powershell: |
     # Using an input-macro:
     #Write-Host "This works 1: $(VSPHERE_USERNAME)"
