@@ -19,7 +19,7 @@ workspace:
 variables:
   group: vsphere-uslilvmlabvc01
   vsphereconfig: "./win2016/vsphere-vars-uslilvmlabvc01.json"
-  VSPHERE_USERNAME: "test\\conor.casey"
+  #VSPHERE_USERNAME: "test\\conor.casey"
 
 steps:
 #- bash: echo $(VSPHERE_USERNAME)
