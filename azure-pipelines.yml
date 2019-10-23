@@ -17,10 +17,10 @@ workspace:
   clean: all
 
 variables:
-  #group: vsphere-uslilvmlabvc01
-  vsphereconfig: "./win2016/vsphere-vars-uslilvmlabvc01.json"
+  - group: vsphere-uslilvmlabvc01
+  #vsphereconfig: "./win2016/vsphere-vars-uslilvmlabvc01.json"
   #VSPHERE_USERNAME: "test\\conor.casey"
-  TESTING: "This is a new test"
+  #TESTING: "This is a new test"
 
 steps:
 #- bash: echo $(VSPHERE_USERNAME)
