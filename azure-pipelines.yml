@@ -18,7 +18,7 @@ workspace:
 
 variables:
   group: vsphere-uslilvmlabvc01
-  vsphereconfig: "./packer/vsphere-vars-uslilvmlabvc01.json"
+  vsphereconfig: "./win2016/vsphere-vars-uslilvmlabvc01.json"
 
 steps:
 - bash: echo $vsphere_username
@@ -34,5 +34,5 @@ steps:
 - task: CmdLine@2
   displayName: Packer build
   inputs:
-    script: packer build -color=false -var-file=$(vsphereconfig) ./packer/windows-base.json 
+    script: packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
 
