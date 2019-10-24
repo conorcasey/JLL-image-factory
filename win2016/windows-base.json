@@ -55,7 +55,11 @@
   "provisioners": [
    {
      "type": "powershell",
-     "inline": ["dir c:\\"]
+     "inline": [
+       "dir c:\\",
+       "Write-Host \"Pausing now for an hour for troubleshooting...\"",
+       "Start-Sleep -Seconds 3600"
+      ]
    }
   ]
 }
