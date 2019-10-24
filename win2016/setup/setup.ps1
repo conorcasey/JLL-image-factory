@@ -1,10 +1,10 @@
 $ErrorActionPreference = "Stop"
 
 #Get username and password from autounattend
-[xml]$xml = get-content "a:\Autounattend.xml"
-$component = $xml.unattend.settings|Where-Object{$_.pass -eq "oobeSystem"}
-$localadminpw = $component.component.UserAccounts.LocalAccounts.LocalAccount.Password.Value
-$localadminuser = $component.component.UserAccounts.LocalAccounts.LocalAccount.name
+#[xml]$xml = get-content "a:\Autounattend.xml"
+#$component = $xml.unattend.settings|Where-Object{$_.pass -eq "oobeSystem"}
+#$localadminpw = $component.component.UserAccounts.LocalAccounts.LocalAccount.Password.Value
+#$localadminuser = $component.component.UserAccounts.LocalAccounts.LocalAccount.name
 
 # Switch network connection to private mode
 # Required for WinRM firewall rules
@@ -17,11 +17,11 @@ winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 winrm set winrm/config/service/auth '@{Basic="true"}'
 
 # Install NuGet required for installation of modules below
-Install-PackageProvider -Name NuGet -Force
-Find-module -Name PSWindowsUpdate
-Install-Module -Name PSWindowsUpdate -Force
-Find-Module -Name Autologon
-Install-Module -Name Autologon -Force
+#Install-PackageProvider -Name NuGet -Force
+#Find-module -Name PSWindowsUpdate
+#Install-Module -Name PSWindowsUpdate -Force
+#Find-Module -Name Autologon
+#Install-Module -Name Autologon -Force
 
 # Windows Updates
 #Copy-Item -path "a:\UpdateTask.ps1" -Destination "C:\Windows\temp\UpdateTask.ps1" -Force
