@@ -24,15 +24,17 @@ Find-Module -Name Autologon
 Install-Module -Name Autologon -Force
 
 # Windows Updates
-Copy-Item -path "a:\UpdateTask.ps1" -Destination "C:\Windows\temp\UpdateTask.ps1" -Force
+#Copy-Item -path "a:\UpdateTask.ps1" -Destination "C:\Windows\temp\UpdateTask.ps1" -Force
+#
+#$action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument '-ExecutionPolicy Bypass -file "C:\Windows\temp\UpdateTask.ps1" -noexit'
+#$trigger =  New-ScheduledTaskTrigger -AtLogOn
+#Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "PSWindowsUpdate"
+#
+#Import-Module -Name Autologon -force;
+#Enable-AutoLogon -Username $localadminuser -Password (ConvertTo-SecureString -String $localadminpw -AsPlainText -Force) -LogonCount "1"
+#
+#Restart-Computer -Force
 
-$action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument '-ExecutionPolicy Bypass -file "C:\Windows\temp\UpdateTask.ps1" -noexit'
-$trigger =  New-ScheduledTaskTrigger -AtLogOn
-Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "PSWindowsUpdate"
-
-Import-Module -Name Autologon -force;
-Enable-AutoLogon -Username $localadminuser -Password (ConvertTo-SecureString -String $localadminpw -AsPlainText -Force) -LogonCount "1"
-
-Restart-Computer -Force
-
-
+# Reset auto logon count
+# https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup-autologon-logoncount#logoncount-known-issue
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name AutoLogonCount -Value 0
