@@ -106,7 +106,7 @@
                 <LocalAccounts>
                     <LocalAccount wcm:action="add">
                         <Password>
-                            <Value>UABhAGMAawBlAHIAMQAyADMAUABhAHMAcwB3AG8AcgBkAA==</Value>
+                            <Value>REPLACEME</Value>
                             <PlainText>false</PlainText>
                         </Password>
                         <Description>Packer Service Account</Description>
@@ -116,13 +116,13 @@
                     </LocalAccount>
                 </LocalAccounts>
                 <AdministratorPassword>
-                    <Value>VABmAGUAQQBkAG0AaQBuADEAMgAzAEEAZABtAGkAbgBpAHMAdAByAGEAdABvAHIAUABhAHMAcwB3AG8AcgBkAA==</Value>
+                    <Value>REPLACEME</Value>
                     <PlainText>false</PlainText>
                 </AdministratorPassword>
             </UserAccounts>
             <AutoLogon>
                 <Password>
-                    <Value>UABhAGMAawBlAHIAMQAyADMAUABhAHMAcwB3AG8AcgBkAA==</Value>
+                    <Value>REPLACEME</Value>
                     <PlainText>false</PlainText>
                 </Password>
                 <Enabled>true</Enabled>
