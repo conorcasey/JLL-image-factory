@@ -16,15 +16,14 @@ winrm quickconfig -quiet
 winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 winrm set winrm/config/service/auth '@{Basic="true"}'
 
-Start-Process ("$filepath\$filename") $UnattendedArgs -Wait -Passthru
-
+# Install NuGet required for installation of modules below
 Install-PackageProvider -Name NuGet -Force
-
 Find-module -Name PSWindowsUpdate
 Install-Module -Name PSWindowsUpdate -Force
 Find-Module -Name Autologon
 Install-Module -Name Autologon -Force
 
+# Windows Updates
 Copy-Item -path "a:\UpdateTask.ps1" -Destination "C:\Windows\temp\UpdateTask.ps1" -Force
 
 $action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument '-ExecutionPolicy Bypass -file "C:\Windows\temp\UpdateTask.ps1" -noexit'
