@@ -25,6 +25,8 @@ steps:
 - task: CmdLine@2
   displayName: Packer build
   inputs:
-    script: packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
+    #script: packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
+    script: sed "s/REPLACEME/$(PACKER_PASSWORD)/g" ./win2016/Autounattend.xml.copy > ./win2016/Autounattend.xml
+    script: cat ./win2016/Autounattend.xml
   env: {VSPHERE_PASSWORD: $(VSPHERE_PASSWORD), PACKER_PASSWORD: $(PACKER_PASSWORD)}
 
