@@ -20,8 +20,6 @@ variables:
   - group: vsphere-uslilvmlabvc01
   - name: vsphereconfig
     value: "./win2016/vsphere-vars-uslilvmlabvc01.json"
-  #VSPHERE_USERNAME: "test\\conor.casey"
-  #TESTING: "This is a new test"
 
 steps:
 - task: CmdLine@2
