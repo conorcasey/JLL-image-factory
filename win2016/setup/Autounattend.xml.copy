@@ -107,7 +107,7 @@
                     <LocalAccount wcm:action="add">
                         <Password>
                             <Value>REPLACEME</Value>
-                            <PlainText>false</PlainText>
+                            <PlainText>true</PlainText>
                         </Password>
                         <Description>Packer Service Account</Description>
                         <DisplayName>packer</DisplayName>
@@ -117,13 +117,13 @@
                 </LocalAccounts>
                 <AdministratorPassword>
                     <Value>REPLACEME</Value>
-                    <PlainText>false</PlainText>
+                    <PlainText>true</PlainText>
                 </AdministratorPassword>
             </UserAccounts>
             <AutoLogon>
                 <Password>
                     <Value>REPLACEME</Value>
-                    <PlainText>false</PlainText>
+                    <PlainText>true</PlainText>
                 </Password>
                 <Enabled>true</Enabled>
                 <Username>packer</Username>
