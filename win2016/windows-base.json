@@ -58,7 +58,7 @@
      "inline": [
        "dir c:\\",
        "Write-Host \"Pausing now for an hour for troubleshooting...\"",
-       "Start-Sleep -Seconds 3600"
+       "Start-Sleep -Seconds 7200"
       ]
    }
   ]
