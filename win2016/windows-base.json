@@ -46,8 +46,6 @@
       "winrm_password": "{{user `packer_password`}}",
       "winrm_timeout": "2h",
 
-      "shutdown_timeout": "1h",
-
       "convert_to_template": false
     }
   ],
@@ -58,7 +56,7 @@
      "inline": [
        "dir c:\\",
        "Write-Host \"Pausing now for an hour or so for troubleshooting...\"",
-       "Start-Sleep -Seconds 7200"
+       "Start-Sleep -Seconds 600"
       ]
    }
   ]
