@@ -12,11 +12,13 @@ $profile = Get-NetConnectionProfile
 Set-NetConnectionProfile -Name $profile.Name -NetworkCategory Private
 
 # Enable WinRM service
+Write-host -Message "Configure WinRM..." -ForegroundColor Yellow
 winrm quickconfig -quiet
 winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 winrm set winrm/config/service/auth '@{Basic="true"}'
 
 # Install NuGet required for installation of modules below
+Write-host -Message "Installing required Powershell modules..." -ForegroundColor Yellow
 Install-PackageProvider -Name NuGet -Force
 Find-module -Name PSWindowsUpdate
 Install-Module -Name PSWindowsUpdate -Force
@@ -24,6 +26,7 @@ Find-Module -Name Autologon
 Install-Module -Name Autologon -Force
 
 # Windows Updates
+Write-host -Message "Apply Windows Updates..." -ForegroundColor Yellow
 Copy-Item -path "a:\UpdateTask.ps1" -Destination "C:\Windows\temp\UpdateTask.ps1" -Force
 
 $action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument '-ExecutionPolicy Bypass -file "C:\Windows\temp\UpdateTask.ps1" -noexit'
@@ -33,6 +36,7 @@ Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "PSWindowsUpd
 Import-Module -Name Autologon -force;
 Enable-AutoLogon -Username $localadminuser -Password (ConvertTo-SecureString -String $localadminpw -AsPlainText -Force) -LogonCount "1"
 
+Write-host -Message "Rebooting..." -ForegroundColor Yellow
 Restart-Computer -Force
 
 # Reset auto logon count
