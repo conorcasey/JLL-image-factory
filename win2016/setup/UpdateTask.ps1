@@ -1,11 +1,11 @@
 # Used for Packer process to install Windows Updates
-Write-host -Message "-- Kicking off Windows Update process --" -ForegroundColor Yellow
+Write-host "-- Kicking off Windows Update process --" -ForegroundColor Yellow
 #Modules Needed
 Import-Module -name pswindowsupdate
 Import-Module -Name Autologon
 
 #Get username and password from autounattend
-Write-host -Message "1) Grabbing credentials." -ForegroundColor Yellow
+Write-host "1) Grabbing credentials." -ForegroundColor Yellow
 [xml]$xml = get-content "a:\Autounattend.xml"
 $component = $xml.unattend.settings|Where-Object{$_.pass -eq "oobeSystem"}
 $localadminpw = $component.component.UserAccounts.LocalAccounts.LocalAccount.Password.Value
@@ -18,32 +18,28 @@ function Test-WUInstallerStatus
 {
     while ((Get-WUInstallerStatus).IsBusy)
     {
-        Write-host -Message "Waiting for Windows update to become free..." -ForegroundColor Yellow
+        Write-host "Waiting for Windows update to become free..." -ForegroundColor Yellow
         Start-Sleep -Seconds 15
     }
 }
 
 #Enable Windows Update Service
-Write-host -Message "2) Starting Windows Update Service" -ForegroundColor Yellow
-write-host "Starting Windows Update Service"
+Write-host "2) Starting Windows Update Service" -ForegroundColor Yellow
 Set-Service wuauserv -StartupType Automatic
 Start-Service wuauserv
 
 #Make sure no other Windows update process is running
-Write-host -Message "3) Checking Windows Update Process" -ForegroundColor Yellow
-write-host "Checking Windows Update Process"
+Write-host "3) Checking Windows Update Process" -ForegroundColor Yellow
 Test-WUInstallerStatus
 
 #Get Updates
-Write-host -Message "4) Getting Available Updates" -ForegroundColor Yellow
-write-host "Getting Available Updates"
+Write-host "4) Getting Available Updates" -ForegroundColor Yellow
 $updates = Get-WUList
 
 #Download and install
 if($updates)
 {
-    Write-host -Message "5) Installing Updates" -ForegroundColor Yellow
-    Write-Host "Installing Updates"
+    Write-host "5) Installing Updates" -ForegroundColor Yellow
     Get-WUInstall -AcceptAll -install -IgnoreReboot
 }
 
@@ -53,8 +49,7 @@ Start-Sleep -Seconds 5
 #Make sure no other Windows update process is running
 Test-WUInstallerStatus
 
-Write-host -Message "6) Checking for reboot" -ForegroundColor Yellow
-write-host "Checking for reboot"
+Write-host "6) Checking for reboot" -ForegroundColor Yellow
 if(Get-WURebootStatus -silent)
 {
     #Needs to reboot
@@ -79,8 +74,7 @@ else
         #Set-Service wuauserv -StartupType Disabled
         #Stop-Service wuauserv
         #Remove Scheduled Task
-        Write-host -Message "7) Removing Scheduled Task" -ForegroundColor Yellow
-        write-host "Removing Scheduled Task"
+        Write-host "7) Removing Scheduled Task" -ForegroundColor Yellow
         Unregister-ScheduledTask -TaskName "PSWindowsUpdate" -Confirm:$false
         #Remove update script
         remove-item "C:\Windows\temp\UpdateTask.ps1" -force
