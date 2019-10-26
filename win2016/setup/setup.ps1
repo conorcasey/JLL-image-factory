@@ -25,7 +25,7 @@ Install-Module -Name PSWindowsUpdate -Force
 Find-Module -Name Autologon
 Install-Module -Name Autologon -Force
 
-# Windows Updates
+# Windows Updates - A task is created on the server to execute the UpdateTask.ps1 script (which performs the updates) on next logon
 Write-host "Apply Windows Updates..." -ForegroundColor Yellow
 Copy-Item -path "a:\UpdateTask.ps1" -Destination "C:\Windows\temp\UpdateTask.ps1" -Force
 
@@ -33,6 +33,8 @@ $action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument '-Executio
 $trigger =  New-ScheduledTaskTrigger -AtLogOn
 Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "PSWindowsUpdate"
 
+# Once scheduled task (above) is configured, auto-logon is enabled and machine rebooted so following the reboot the Windows Update task
+# (UpdateTask.ps1) will be executed
 Import-Module -Name Autologon -force;
 Enable-AutoLogon -Username $localadminuser -Password (ConvertTo-SecureString -String $localadminpw -AsPlainText -Force) -LogonCount "1"
 

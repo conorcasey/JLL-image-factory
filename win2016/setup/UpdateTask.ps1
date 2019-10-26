@@ -40,7 +40,8 @@ $updates = Get-WUList
 if($updates)
 {
     Write-host "5) Installing Updates" -ForegroundColor Yellow
-    Get-WUInstall -AcceptAll -install -IgnoreReboot
+    #Get-WUInstall -AcceptAll -install -IgnoreReboot
+    Get-WUInstall -AcceptAll -IgnoreReboot
 }
 
 #Wait for Windows Update to start if needed
@@ -84,14 +85,14 @@ else
         Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name AutoLogonCount -Value 0
         
         #Try enabling HTTPS for Winrm
-        Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1'))
+        #Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1'))
     }
 
     #Enable CredSSP
-    Enable-WSManCredSSP -Role "Server" -Force
+    #Enable-WSManCredSSP -Role "Server" -Force
 
     #Enable basic auth for vro
-    winrm set winrm/config/service/auth '@{Basic="true"}'
+    #winrm set winrm/config/service/auth '@{Basic="true"}'
 
 }
 

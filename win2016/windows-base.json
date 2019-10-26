@@ -46,6 +46,7 @@
       "winrm_password": "{{user `packer_password`}}",
       "winrm_timeout": "2h",
 
+      "shutdown_timeout": "1h",
       "convert_to_template": false
     }
   ],
