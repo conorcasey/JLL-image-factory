@@ -56,8 +56,8 @@
      "type": "powershell",
      "inline": [
        "dir c:\\",
-       "Write-Host \"Pausing now for an hour or so for troubleshooting...\"",
-       "Start-Sleep -Seconds 3600"
+       "Write-Host \"Pausing now for an hour for some troubleshooting...\"",
+       "Start-Sleep -Seconds 3600"
     ]
    }
   ]
