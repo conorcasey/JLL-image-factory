@@ -57,10 +57,6 @@
      "inline": [
        "dir c:\\"
     ]
-   },
-   {
-    "type": "windows-update",
-    "search_criteria": "IsInstalled=0"
    }
   ]
 }
