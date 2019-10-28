@@ -40,8 +40,7 @@ $updates = Get-WUList
 if($updates)
 {
     Write-host "5) Installing Updates" -ForegroundColor Yellow
-    #Get-WUInstall -AcceptAll -install -IgnoreReboot
-    Get-WUInstall -AcceptAll -IgnoreReboot
+    Get-WUInstall -AcceptAll -Install -IgnoreReboot
 }
 
 #Wait for Windows Update to start if needed
@@ -92,7 +91,7 @@ else
     #Enable-WSManCredSSP -Role "Server" -Force
 
     #Enable basic auth for vro
-    #winrm set winrm/config/service/auth '@{Basic="true"}'
+    winrm set winrm/config/service/auth '@{Basic="true"}'
 
 }
 
