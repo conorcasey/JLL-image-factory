@@ -6,29 +6,24 @@
 trigger:
   - master
 
-jobs:
-- job: Build
-  timeoutInMinutes: 360
-  cancelTimeoutInMinutes: 2
+pool:
+  name: 'Linux-Docker'  
+  container: joneslanglasalle/imagefactory:vsphere1
 
-  pool:
-    name: 'Linux-Docker'  
-    container: joneslanglasalle/imagefactory:vsphere1
+workspace:
+  clean: all
 
-  workspace:
-    clean: all
+variables:
+- group: vsphere-uslilvmlabvc01
+- name: vsphereconfig
+  value: "./win2016/vsphere-vars-uslilvmlabvc01.json"
 
-  variables:
-  - group: vsphere-uslilvmlabvc01
-  - name: vsphereconfig
-    value: "./win2016/vsphere-vars-uslilvmlabvc01.json"
-    
-  steps:
-  - task: CmdLine@2
-    displayName: Packer build
-    inputs:
-      script: |
-        sed "s/REPLACEME/$(PACKER_PASSWORD)/g" ./win2016/setup/Autounattend.xml.copy > ./win2016/setup/Autounattend.xml
-        packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
-    env: {VSPHERE_PASSWORD: $(VSPHERE_PASSWORD), PACKER_PASSWORD: $(PACKER_PASSWORD)}
+steps:
+- task: CmdLine@2
+  displayName: Packer build
+  inputs:
+    script: |
+      sed "s/REPLACEME/$(PACKER_PASSWORD)/g" ./win2016/setup/Autounattend.xml.copy > ./win2016/setup/Autounattend.xml
+      packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
+  env: {VSPHERE_PASSWORD: $(VSPHERE_PASSWORD), PACKER_PASSWORD: $(PACKER_PASSWORD)}
 
