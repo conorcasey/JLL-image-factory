@@ -3,16 +3,15 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml test
 
-
-
-trigger:
-- master
-
-pool:
-  name: 'Linux-Docker'
+jobs:
+- job: Build
+  timeoutInMinutes: 360
+  cancelTimeoutInMinutes: 2
+  trigger:
+  - master
+  pool:
+    name: 'Linux-Docker'
   
-timeoutInMinutes: 360
-cancelTimeoutInMinutes: 2
 
 container: joneslanglasalle/imagefactory:vsphere1
 
