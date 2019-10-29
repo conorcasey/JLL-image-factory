@@ -10,15 +10,19 @@ jobs:
 - job: Build
   timeoutInMinutes: 360
   cancelTimeoutInMinutes: 2
+
   pool:
     name: 'Linux-Docker'  
     container: joneslanglasalle/imagefactory:vsphere1
+
   workspace:
     clean: all
+
   variables:
   - group: vsphere-uslilvmlabvc01
   - name: vsphereconfig
     value: "./win2016/vsphere-vars-uslilvmlabvc01.json"
+    
   steps:
   - task: CmdLine@2
     displayName: Packer build
