@@ -17,6 +17,7 @@ Set-NetConnectionProfile -Name $profile.Name -NetworkCategory Private
 #winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 #winrm set winrm/config/service/auth '@{Basic="true"}'
 
+<#
 # Install NuGet required for installation of modules below
 Write-host "Installing required Powershell modules..." -ForegroundColor Yellow
 Install-PackageProvider -Name NuGet -Force
@@ -41,6 +42,8 @@ Enable-AutoLogon -Username $localadminuser -Password (ConvertTo-SecureString -St
 Write-host "Rebooting..." -ForegroundColor Yellow
 Restart-Computer -Force
 
+#>
+
 # Reset auto logon count
 # https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup-autologon-logoncount#logoncount-known-issue
-#Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name AutoLogonCount -Value 0
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name AutoLogonCount -Value 0
