@@ -21,8 +21,8 @@
       "host": "{{user `vcenter_host`}}",
       "datastore": "{{user `vcenter_datastore`}}",
 
-      "CPUs": 2,
-      "RAM": 4096,
+      "CPUs": 4,
+      "RAM": 8192,
       "disk_size": 61440,
       "network": "{{user `vcenter_vlan`}}",
 
@@ -44,9 +44,9 @@
       "communicator": "winrm",
       "winrm_username": "packer",
       "winrm_password": "{{user `packer_password`}}",
-      "winrm_timeout": "2h",
+      "winrm_timeout": "3h",
 
-      "shutdown_timeout": "2h",
+      "shutdown_timeout": "3h",
       "convert_to_template": false
     }
   ],
