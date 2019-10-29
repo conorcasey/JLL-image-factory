@@ -11,7 +11,7 @@ trigger:
 pool:
   name: 'Linux-Docker'
 
-container: joneslanglasalle/imagefactory:vsphere
+container: joneslanglasalle/imagefactory:vsphere1
 
 workspace:
   clean: all
