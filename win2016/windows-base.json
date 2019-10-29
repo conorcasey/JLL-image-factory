@@ -46,7 +46,7 @@
       "winrm_password": "{{user `packer_password`}}",
       "winrm_timeout": "2h",
 
-      "shutdown_timeout": "8h",
+      "shutdown_timeout": "2h",
       "convert_to_template": false
     }
   ],
@@ -59,8 +59,8 @@
     ]
    },
    {
-     "type": "windows-update",
-     "search_criteria": "IsInstalled=0"
+     "type": "windows-update",
+     "search_criteria": "IsInstalled=0"
    }
   ]
 }
