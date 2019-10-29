@@ -10,6 +10,9 @@ trigger:
 
 pool:
   name: 'Linux-Docker'
+  
+timeoutInMinutes: 360
+cancelTimeoutInMinutes: 2
 
 container: joneslanglasalle/imagefactory:vsphere1
 
@@ -20,11 +23,6 @@ variables:
   - group: vsphere-uslilvmlabvc01
   - name: vsphereconfig
     value: "./win2016/vsphere-vars-uslilvmlabvc01.json"
-    
-jobs:
-- job: Build
-  timeoutInMinutes: 360
-  cancelTimeoutInMinutes: 2
 
 steps:
 - task: CmdLine@2
