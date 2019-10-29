@@ -12,10 +12,10 @@ $profile = Get-NetConnectionProfile
 Set-NetConnectionProfile -Name $profile.Name -NetworkCategory Private
 
 # Enable WinRM service
-#Write-host -Message "Configure WinRM..." -ForegroundColor Yellow
-#winrm quickconfig -quiet
-#winrm set winrm/config/service '@{AllowUnencrypted="true"}'
-#winrm set winrm/config/service/auth '@{Basic="true"}'
+Write-host -Message "Configure WinRM..." -ForegroundColor Yellow
+winrm quickconfig -quiet
+winrm set winrm/config/service '@{AllowUnencrypted="true"}'
+winrm set winrm/config/service/auth '@{Basic="true"}'
 
 <#
 # Install NuGet required for installation of modules below
