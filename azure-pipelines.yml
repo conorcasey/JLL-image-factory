@@ -37,7 +37,7 @@ jobs:
   - task: Powershell@2
     displayName: Convert vm to template
     inputs:
-      script: |
-        ./win2016/scripts/VmToTemplate.ps1
+      targetType: 'filePath'
+      filePath: ./win2016/scripts/VmToTemplate.ps1
     env: {VSPHERE_PASSWORD: $(VSPHERE_PASSWORD)}
 
