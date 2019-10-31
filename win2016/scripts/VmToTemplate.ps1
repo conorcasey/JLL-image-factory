@@ -16,6 +16,7 @@
 
 #>
 
+Import-Module -Name VMware.PowerCLI
 
 #Connect to vCenter server
 Write-Output "`nConnecting to vCenter : $env:VSPHERE_SERVER"
