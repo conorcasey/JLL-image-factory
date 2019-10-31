@@ -38,6 +38,6 @@ jobs:
     displayName: Convert vm to template
     inputs:
       script: |
-        VmToTemplate.ps1
+        ./win2016/scripts/VmToTemplate.ps1
     env: {VSPHERE_PASSWORD: $(VSPHERE_PASSWORD)}
 
