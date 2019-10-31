@@ -35,10 +35,17 @@ jobs:
     env: {VSPHERE_PASSWORD: $(VSPHERE_PASSWORD), PACKER_PASSWORD: $(PACKER_PASSWORD)}
 
   - task: Powershell@2
+    displayName: Testing
+    inputs:
+      pwsh: true
+      targetType: 'inline'
+      script: pwsh -Command Get-InstalledModule
+
+  - task: Powershell@2
     displayName: Convert vm to template
     inputs:
+      pwsh: true
       targetType: 'filePath'
       filePath: ./win2016/scripts/VmToTemplate.ps1
-      pwsh: true
     env: {VSPHERE_PASSWORD: $(VSPHERE_PASSWORD)}
 
