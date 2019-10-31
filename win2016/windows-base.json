@@ -52,16 +52,12 @@
   ],
 
   "provisioners": [
-   {
-     "type": "powershell",
-     "inline": [
-       "dir c:\\"
-    ]
-   },
-   {
-     "type": "windows-update",
-     "search_criteria": "IsInstalled=0"
-   }
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest.json",
+      "strip_path": true
+    }
   ]
 }
 

@@ -22,6 +22,8 @@ jobs:
   - group: vsphere-uslilvmlabvc01
   - name: vsphereconfig
     value: "./win2016/vsphere-vars-uslilvmlabvc01.json"
+  - name: FRIENDLYNAME
+    value: "Windows 2016 Server Datacenter Template"
 
   steps:
   - task: CmdLine@2
@@ -31,4 +33,11 @@ jobs:
         sed "s/REPLACEME/$(PACKER_PASSWORD)/g" ./win2016/setup/Autounattend.xml.copy > ./win2016/setup/Autounattend.xml
         packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
     env: {VSPHERE_PASSWORD: $(VSPHERE_PASSWORD), PACKER_PASSWORD: $(PACKER_PASSWORD)}
+
+  - task: CmdLine@2
+    displayName: Convert vm to template
+    inputs:
+      script: |
+        VmToTemplate.ps1
+    env: {VSPHERE_PASSWORD: $(VSPHERE_PASSWORD)}
 
