@@ -53,8 +53,10 @@
 
   "provisioners": [
     {
-      "type": "shell",
-      "inline": ["echo Hello World"]
+      "type": "powershell",
+      "inline": [
+        "dir c:\\"
+     ]
     }
   ],
 
@@ -65,6 +67,5 @@
       "strip_path": true
     }
   ]
-
 }
 
