@@ -34,18 +34,6 @@ jobs:
         packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
     env: {VSPHERE_PASSWORD: $(VSPHERE_PASSWORD), PACKER_PASSWORD: $(PACKER_PASSWORD)}
 
-  - task: Powershell@2
-    displayName: Testing
-    inputs:
-      pwsh: true
-      targetType: 'inline'
-      script: Get-InstalledModule
-
-  - task: Powershell@2
-    displayName: Convert vm to template
-    inputs:
-      pwsh: true
-      targetType: 'filePath'
-      filePath: ./win2016/scripts/VmToTemplate.ps1
-    env: {VSPHERE_PASSWORD: $(VSPHERE_PASSWORD)}
+  - pwsh: Get-InstalledModule
+  - pwsh: ./win2016/scripts/VmToTemplate.ps1
 
