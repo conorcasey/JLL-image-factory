@@ -39,7 +39,7 @@ jobs:
     inputs:
       pwsh: true
       targetType: 'inline'
-      script: pwsh -Command Get-InstalledModule
+      script: Get-InstalledModule
 
   - task: Powershell@2
     displayName: Convert vm to template
