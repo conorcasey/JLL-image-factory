@@ -84,7 +84,7 @@ if($currenttemplate)
 
 #Set note
 $date = get-date
-$note = "Build Date: $date`nADO Build: $(env:Build.BuildId)`nADO Job: $(env:Build.BuildUri)"
+$note = "Build Date: $date`nADO Build: $env:BUILD_BUILDID`nADO Job: $env:BUILD_BUILDURI"
 $newtemplate|Set-VM -note $note -Confirm:$false
 
 #Convert to template
