@@ -41,6 +41,8 @@ jobs:
 
   - pwsh: |
       env
+      Get-Location
+      Get-Variable PSModulePath -valueOnly
       Install-PackageProvider -Name NuGet -Force
       dir
       Get-Help
