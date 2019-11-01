@@ -10,8 +10,10 @@ jobs:
 - job: Build
   timeoutInMinutes: 360
 
+  #pool:
+  #  name: 'Linux-Docker'
   pool:
-    name: 'Linux-Docker'
+    vmImage: 'ubuntu-16.04'
 
   container: joneslanglasalle/imagefactory:vsphere1
 
