@@ -28,8 +28,9 @@ catch {
 }
 
 
-$manifest = get-content "./manifest.json"|ConvertFrom-Json
-$newtemp = $manifest.builds[0].artifact_id
+#$manifest = get-content "./manifest.json"|ConvertFrom-Json
+#$newtemp = $manifest.builds[0].artifact_id
+$newtemp = "windows2016_template1572565029"
 
 $convertname = $env:FRIENDLYNAME
 

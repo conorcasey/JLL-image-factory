@@ -12,8 +12,6 @@ jobs:
 
   pool:
     name: 'Linux-Docker'
-  #pool:
-  #  vmImage: 'ubuntu-16.04'
 
   container: joneslanglasalle/imagefactory:vsphere1
 
@@ -36,24 +34,15 @@ jobs:
   #      packer build -color=false -var-file=$(vsphereconfig) ./win2016/windows-base.json 
   #  env: {VSPHERE_PASSWORD: $(VSPHERE_PASSWORD), PACKER_PASSWORD: $(PACKER_PASSWORD)}
 
-  - task: CmdLine@2
-    displayName: uname
-    inputs:
-      script: |
-        env
-
-  - pwsh: |
-      env
-      dir
-      Connect-VIServer
+    - task: PowerShell@2
+      displayName: Convert vm to template
+      inputs:
+        targetType: 'filePath'
+        filePath: ./win2016/scripts/VmToTemplate.ps1
+        pwsh: true
+      env: {VSPHERE_PASSWORD: $(VSPHERE_PASSWORD)}
 
   #- pwsh: ./win2016/scripts/VmToTemplate.ps1
 
-  - task: Powershell@2
-    displayName: Testing
-    inputs:
-      pwsh: true
-      targetType: 'inline'
-      script: dir
 
 
