@@ -41,7 +41,7 @@ jobs:
     inputs:
       script: |
         env
-        ls /root/.local/share/powershell/Modules/
+        #ls /root/.local/share/powershell/Modules/
 
   - pwsh: |
       env
