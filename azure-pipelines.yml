@@ -37,7 +37,7 @@ jobs:
   - task: CmdLine@2
     displayName: uname
     inputs:
-      script: uname -a
+      script: env
 
   - pwsh: |
       Install-PackageProvider -Name NuGet -Force
