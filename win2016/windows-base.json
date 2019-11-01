@@ -54,7 +54,7 @@
   "provisioners": [
     {
       "type": "windows-update",
-      "search_criteria": "IsInstaller=0"
+      "search_criteria": "IsInstalled=0"
     }
   ],
 
