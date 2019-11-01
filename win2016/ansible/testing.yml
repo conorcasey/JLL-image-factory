@@ -3,7 +3,7 @@
   vars:
     ansible_become: false
   tasks:
-  - name: create directory
+  - name: Create Test Directory
     win_file:
-      path: C:\jll2
+      path: C:\jll2_Test
       state: directory
