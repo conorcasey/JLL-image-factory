@@ -1,4 +1,4 @@
-"---
+---
 - hosts: all
   vars:
     ansible_become: false
@@ -6,4 +6,4 @@
   - name: create directory
     win_file:
       path: C:\jll2
-      state: directory"
+      state: directory
