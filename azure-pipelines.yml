@@ -16,6 +16,7 @@ jobs:
     vmImage: 'ubuntu-16.04'
 
   container: joneslanglasalle/imagefactory:vsphere1
+    options:
 
   workspace:
     clean: all
@@ -46,7 +47,7 @@ jobs:
   - pwsh: |
       env
       dir
-      Connect-VIServer
+      install-module VMware.PowerCLI -Scope CurrentUser -force -confirm:$false
 
   #- pwsh: ./win2016/scripts/VmToTemplate.ps1
 
