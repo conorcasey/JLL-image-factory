@@ -16,7 +16,7 @@
 
 #>
 
-Set-PowerCLIConfiguration -InvalidCertificateAction:ignore
+Set-PowerCLIConfiguration -InvalidCertificateAction:ignore  -confirm:$false
 
 #Connect to vCenter server
 Write-Output "`nConnecting to vCenter : $env:VSPHERE_SERVER"
