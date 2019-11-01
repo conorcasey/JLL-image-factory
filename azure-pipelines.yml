@@ -41,6 +41,7 @@ jobs:
       script: uname -a
 
   - pwsh: |
+      Import-Module -Name VMware.VimAutomation.Core
       dir
       Get-Help
       Get-InstalledModule
