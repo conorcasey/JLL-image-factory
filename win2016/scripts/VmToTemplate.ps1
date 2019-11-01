@@ -79,7 +79,7 @@ catch
 if($currenttemplate)
 {
     write-host "Renaming $convertname to ${convertname}.old"
-    $convertname|Set-Template -name "${convertname}.old"
+    $currenttemplate|Set-Template -name "${convertname}.old"
 }
 
 #Set note
