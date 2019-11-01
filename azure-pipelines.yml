@@ -16,7 +16,6 @@ jobs:
     vmImage: 'ubuntu-16.04'
 
   container: joneslanglasalle/imagefactory:vsphere1
-    options:
 
   workspace:
     clean: all
