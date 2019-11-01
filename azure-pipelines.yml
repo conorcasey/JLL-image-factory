@@ -13,7 +13,8 @@ jobs:
   pool:
     name: 'Linux-Docker'  
 
-  container: joneslanglasalle/imagefactory:vsphere1
+  #container: joneslanglasalle/imagefactory:vsphere1
+  container: thinkahead/aws-vsphere-ws-byol:ansible2.7
 
   workspace:
     clean: all
