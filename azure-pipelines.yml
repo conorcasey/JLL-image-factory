@@ -11,7 +11,8 @@ jobs:
   timeoutInMinutes: 360
 
   pool:
-    name: 'Linux-Docker'  
+    #name: 'Linux-Docker'
+    name: 'ubuntu-16.04'
 
   container: joneslanglasalle/imagefactory:vsphere1
 
@@ -41,14 +42,9 @@ jobs:
 
   - pwsh: |
       env
-      Get-Location
-      Get-Variable PSModulePath -valueOnly
-      Install-PackageProvider -Name NuGet -Force
       dir
-      Get-Help
-      Get-InstalledModule
-      
-  - pwsh: Connect-VIServer
+      Connect-VIServer
+
   #- pwsh: ./win2016/scripts/VmToTemplate.ps1
 
   - task: Powershell@2
