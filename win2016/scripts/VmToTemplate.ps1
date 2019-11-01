@@ -47,7 +47,7 @@ catch
 
 Write-host "Found $newtemp!"
 
-#Checks for a .old template
+#Checks for a .old version of the template
 try{
     $oldtemplate = Get-Template -Name "${convertname}.old" -ErrorAction Continue
 }
@@ -56,7 +56,7 @@ catch
     $oldtemplate = $false
 }
 
-#Removes previous .old template if found
+#Removes .old template if found
 if($oldtemplate)
 {
     Write-Host "Removing $oldtemplate"
@@ -66,10 +66,21 @@ else {
     Write-Host "$oldtemplate not found"
 }
 
-#Rename current template to .old version
-write-host "Renaming $convertname to ${convertname}.old"
-$convertname|Set-Template -name "${convertname}.old"
+#Checks for a current version of the template
+try{
+    $currenttemplate = Get-Template -Name "${convertname}" -ErrorAction Continue
+}
+catch
+{
+    $currenttemplate = $false
+}
 
+#Rename current template to .old version
+if($currenttemplate)
+{
+    write-host "Renaming $convertname to ${convertname}.old"
+    $convertname|Set-Template -name "${convertname}.old"
+}
 
 #Set note
 $date = get-date
