@@ -39,7 +39,11 @@ jobs:
     inputs:
       script: uname -a
 
-  - pwsh: dir
+  - pwsh: |
+      dir
+      Get-Help
+      Get-InstalledModule
+      
   - pwsh: Connect-VIServer
   #- pwsh: ./win2016/scripts/VmToTemplate.ps1
 
