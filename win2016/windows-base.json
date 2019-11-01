@@ -53,8 +53,13 @@
 
   "provisioners": [
     {
-      "type": "windows-update",
-      "search_criteria": "IsInstalled=0"
+      "type": "ansible",
+      "playbook_file": "./win2016/ansible/testing.yml",
+      "extra_arguments": [
+        "--connection", "packer",
+        "--extra-vars", "ansible_shell_type=powershell ansible_shell_executable=None ansible_python_interpreter=/usr/bin/python3",
+        "-vvvv"
+      ]
     }
   ],
 

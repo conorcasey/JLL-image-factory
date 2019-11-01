@@ -1,0 +1,9 @@
+"---
+- hosts: all
+  vars:
+    ansible_become: false
+  tasks:
+  - name: create directory
+    win_file:
+      path: C:\jll2
+      state: directory"
