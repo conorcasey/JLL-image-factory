@@ -13,8 +13,7 @@ jobs:
   pool:
     name: 'Linux-Docker'  
 
-  #container: joneslanglasalle/imagefactory:vsphere1
-  container: thinkahead/aws-vsphere-ws-byol:ansible2.7
+  container: joneslanglasalle/imagefactory:vsphere1
 
   workspace:
     clean: all
@@ -41,7 +40,7 @@ jobs:
       script: uname -a
 
   - pwsh: |
-      Import-Module -Name VMware.VimAutomation.Core
+      Install-PackageProvider -Name NuGet -Force
       dir
       Get-Help
       Get-InstalledModule
