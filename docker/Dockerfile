@@ -24,7 +24,7 @@ RUN echo "==> Link /usr/bin/python to version 3" && \
 # Powershell modules install
 RUN echo "===> Installing powershell modules..." && \
     pwsh -c 'Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted' && \
-    pwsh -c 'install-module VMware.PowerCLI -force -confirm:$false' && \
+    pwsh -c 'install-module VMware.PowerCLI -Scope AllUsers -force -confirm:$false' && \
     pwsh -c 'Set-PowerCLIConfiguration -InvalidCertificateAction:Ignore -confirm:$false'
 
 # Install Ansible
