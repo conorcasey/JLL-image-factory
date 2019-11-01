@@ -42,12 +42,11 @@ jobs:
     inputs:
       script: |
         env
-        #ls /root/.local/share/powershell/Modules/
 
   - pwsh: |
       env
       dir
-      install-module VMware.PowerCLI -Scope CurrentUser -force -confirm:$false
+      Connect-VIServer
 
   #- pwsh: ./win2016/scripts/VmToTemplate.ps1
 
