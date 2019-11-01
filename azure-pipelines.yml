@@ -38,7 +38,9 @@ jobs:
   - task: CmdLine@2
     displayName: uname
     inputs:
-      script: env
+      script: |
+        env
+        ls /root/.local/share/powershell/Modules/
 
   - pwsh: |
       env
